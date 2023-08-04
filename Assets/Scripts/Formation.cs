@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,25 +10,20 @@ public class Formation : MonoBehaviour
     protected List<GameObject> enemies = new List<GameObject>();
 
     [SerializeField] int amountEnemy = 16;
+    [SerializeField] float moveDuration = 3f;
+    [SerializeField] float delayTime = 5f;
+
+    [SerializeField] GameObject enemyPrefab;
+
     [SerializeField] List<Transform> SquarePoints = new List<Transform>();
     [SerializeField] List<Transform> RectanglePoints = new List<Transform>();
     [SerializeField] List<Transform> TrianglePoints = new List<Transform>();
     [SerializeField] List<Transform> DiamondPoints = new List<Transform>();
-    [SerializeField] GameObject enemyPrefab;
-
-    [SerializeField] float moveDuration = 3f;
-    [SerializeField] float delayTime = 5f;
-
-
 
     private void Start()
     {
         GenerateEnemies();
-        //SquareArrangeFormation();
-        //DiamondArrangeFormation();
-        //RectangleArrangeFormation();
-        //TriangleArrangeFormation();
-        StartCoroutine(Test());
+        StartCoroutine(ArrangeFormations());
     }
 
     public void GenerateEnemies()
@@ -37,8 +31,8 @@ public class Formation : MonoBehaviour
         for (int i = 0; i < amountEnemy; i++)
         {
 
-            float posY = 8.0f;
-            float posX = UnityEngine.Random.Range(-6.0f, 6.0f);
+            float posY = 10f;
+            float posX = Random.Range(-8.0f, 8.0f);
             GameObject enemy = ObjectPooling.Instant.GetGameObject(enemyPrefab);
             enemy.transform.position = new Vector2(posX, posY);
             enemy.SetActive(true);
@@ -75,7 +69,7 @@ public class Formation : MonoBehaviour
         }
     }
 
-    IEnumerator Test()
+    IEnumerator ArrangeFormations()
     {
         SquareArrangeFormation();
 

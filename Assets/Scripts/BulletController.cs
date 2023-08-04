@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -13,11 +12,6 @@ public class BulletController : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(DisActive());
-    }
-
-    private void Start()
-    {
-        
     }
 
     void Update()
@@ -34,7 +28,6 @@ public class BulletController : MonoBehaviour
     {
         yield return new WaitForSeconds(_lifeTime);
         transform.gameObject.SetActive(false);
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

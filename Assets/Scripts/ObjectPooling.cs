@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +28,5 @@ public class ObjectPooling : Singleton<ObjectPooling>
         _listObject.Add(obj, list);
 
         return g2;
-
     }
 }
